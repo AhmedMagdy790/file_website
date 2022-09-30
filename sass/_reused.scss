@@ -6,7 +6,7 @@
 }
 
 %head {
-    color: $independence;
+    color: $bs-gray;
     font-family: $google--font-main;
     line-height: 1.2;
 }
@@ -34,25 +34,25 @@ h3 {
 
 .btn-primary {
     background: $bs-green;
-    color: $white;
+    color: $bs-white;
     &:is(:hover, :focus) {
         $bs-green: hsl(152, 69%, 20%);
     }
 }
 
 .btn-outline {
-    border: 1px solid $majorelle-blue;
-    color: $majorelle-blue;
+    border: 1px solid $bs-indigo;
+    color: $bs-indigo;
     &:is(:hover, :focus) {
-        background: $majorelle-blue;
-        color: $white;
-        box-shadow: 0 3px 10px hsla(245, 67%, 59%, 0.5);
+        background: $bs-indigo;
+        color: $bs-white;
+        box-shadow: 0 3px 10px hsl(263, 90%, 31%);
     }
 }
 
 .btn-secondary {
     border: 1px solid hsla(245, 67%, 59%, 0.15);
-    color: $majorelle-blue;
+    color: $bs-indigo;
 }
 
 .setion-title {
@@ -60,7 +60,7 @@ h3 {
 }
 
 .section-text {
-    color: $cool-gray;
+    color: $bs-gray-dark;
     font-size: $fs-6;
     line-height: 1.7;
     text-align: center;
