@@ -112,4 +112,257 @@ h3 {
   font-size: 15px;
   line-height: 1.7;
   text-align: center;
+}
+
+.setting .icon, .app .list-word .item .buttons, .app .list-word .item .words, .app .list-word .item, .app .cards-word .layer, .app .cards-word .control, .app .cards-word .card-eng, .app .cards-word .card-arb, .app .cards-word, .app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setting, .app .list-word, .app .cards-word, .app .add-word {
+  padding: 100px 40px;
+  box-shadow: 0 0 10px hsla(0deg, 0%, 0%, 0.15);
+  border-radius: 10px;
+  background: hsla(246deg, 100%, 97%, 0.5);
+  border: 2px solid hsla(0deg, 0%, 80%, 0.5);
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 30px 0;
+}
+.app .container {
+  width: 100%;
+}
+.app .container [item] {
+  visibility: hidden;
+  margin: 0 auto;
+}
+.app .add-word {
+  min-width: 360px;
+  max-width: 400px;
+}
+.app .add-word input {
+  padding: 15px 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  border: 2px solid hsla(0deg, 0%, 80%, 0.5);
+  outline: 0;
+}
+.app .add-word input:focus {
+  border: 2px solid hsla(0deg, 0%, 0%, 0.3);
+}
+.app .add-word .btn {
+  margin-inline: auto;
+}
+.app .cards-word {
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  min-width: 360px;
+  max-width: 500px;
+  position: relative;
+  perspective: 1000px;
+}
+.app .cards-word .card-eng, .app .cards-word .card-arb {
+  box-shadow: 0 0 10px hsla(0deg, 0%, 0%, 0.15);
+  padding: 20px 15px;
+  border-radius: 8px;
+  background: hsl(223deg, 85%, 65%);
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.app .cards-word .card-eng .word, .app .cards-word .card-arb .word {
+  color: #fff;
+  font-weight: 500;
+  font-size: 50px;
+}
+.app .cards-word .item {
+  position: relative;
+  width: 320px;
+  height: 280px;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+.app .cards-word .item:hover {
+  transform: rotateY(180deg);
+}
+.app .cards-word .card-arb {
+  transform: rotateY(180deg);
+}
+.app .cards-word .card-eng {
+  background: hsl(0deg, 90%, 65%);
+}
+.app .cards-word .control {
+  margin-top: 30px;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+.app .cards-word .control .swiper-pagination span {
+  display: inline-block;
+}
+.app .cards-word .control .swiper-button-next,
+.app .cards-word .control .swiper-button-prev {
+  top: 0;
+  margin: 0;
+  width: 50px;
+  height: 50px;
+}
+.app .cards-word .control .swiper-button-next::before,
+.app .cards-word .control .swiper-button-prev::before {
+  width: 100%;
+}
+.app .cards-word .layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transition: 1s;
+  z-index: 999999999999;
+  opacity: 1;
+}
+.app .list-word {
+  width: 100%;
+  min-width: 360px;
+  max-width: 800px;
+}
+.app .list-word .item {
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid hsla(0deg, 0%, 80%, 0.5);
+}
+.app .list-word .item > * {
+  padding: 5px;
+  font-size: 24px;
+}
+.app .list-word .item .words {
+  gap: 30px;
+}
+.app .list-word .item .btn {
+  font-size: 16px;
+  padding: 7px 15px;
+  margin-left: 5px;
+  color: #fff;
+  font-weight: 400;
+}
+.app .list-word .item .delete {
+  background: hsl(0deg, 87%, 65%);
+}
+.app .list-word .item .delete + .btn {
+  background: hsl(120deg, 87%, 60%);
+}
+
+.setting {
+  position: fixed;
+  right: 0;
+  transform: translateX(100%);
+  top: 0;
+  z-index: 99999;
+  background: #fff;
+  border-radius: 0;
+  height: 100vh;
+  width: 100%;
+  max-width: 270px;
+  padding: 50px 20px;
+  transition: 0.8s;
+  border: 1px solid hsla(0deg, 0%, 80%, 0.5);
+}
+.setting .btn {
+  margin: 0 auto 20px;
+  background: #0d6efd;
+  color: #fff;
+}
+.setting .icon {
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  cursor: pointer;
+  border: 1px solid hsla(0deg, 0%, 80%, 0.5);
+  border-right: 0px;
+}
+.setting .icon i {
+  font-size: 20px;
+  color: hsl(0deg, 0%, 65%);
+}
+.setting.active {
+  transform: translateX(0%);
+}
+.setting.active i {
+  -webkit-animation-name: gear;
+          animation-name: gear;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+#notifications {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  font-weight: bold;
+  transition: 1s;
+}
+#notifications .item {
+  background: hsla(119deg, 100%, 85%, 0.4);
+  border: 2px solid hsl(119deg, 100%, 75%);
+  color: hsl(119deg, 100%, 40%);
+  -webkit-animation-name: notifications;
+          animation-name: notifications;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 40px;
+}
+#notifications .item.fild {
+  color: hsl(0deg, 100%, 40%);
+  background: hsla(0deg, 100%, 85%, 0.4);
+  border: 2px solid hsl(0deg, 100%, 75%);
+}
+
+@-webkit-keyframes notifications {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes notifications {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@-webkit-keyframes gear {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes gear {
+  100% {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,256 @@
+@use "../colors" as *;
+%center-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+%style-cards {
+    padding: 100px 40px;
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 15%);
+    border-radius: 10px;
+    background: hsla(246, 100%, 97%, 0.5);
+    border: 2px solid hsla(0, 0%, 80%, 0.5);
+}
+.app {
+    width: 100%;
+    min-height: 100vh;
+    @extend %center-items;
+    position: relative;
+    overflow: hidden;
+    padding: 30px 0;
+    .container {
+        width: 100%;
+        [item] {
+           visibility: hidden;
+           margin: 0 auto;
+        }
+
+    }
+    .add-word {
+        @extend %style-cards;
+        min-width: 360px;
+        max-width: 400px;
+        input {
+            padding: 15px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            border: 2px solid hsla(0, 0%, 80%, 0.5);
+            outline: 0;
+            &:focus {
+                border: 2px solid hsla(0, 0%, 0%, 0.3);
+            }
+        }
+        .btn {
+            margin-inline: auto;
+        }
+    }
+    .cards-word {
+        @extend %style-cards;
+        @extend %center-items;
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+        min-width: 360px;
+        max-width: 500px;
+        position: relative;
+        %style-card {
+            box-shadow: 0 0 10px hsla(0, 0%, 0%, 15%);
+            padding: 20px 15px;
+            @extend %center-items;
+            border-radius: 8px;
+            background: hsl(223deg, 85%, 65%);
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            .word {
+                color: #fff;
+                font-weight: 500;
+                font-size: 50px
+            }
+        }
+        perspective: 1000px;
+        .item {
+            position: relative;
+            width: 320px;
+            height: 280px;
+            transition: 1s;
+            transform-style: preserve-3d;
+            &:hover {
+                transform: rotateY(180deg);
+            }
+        }
+        .card-arb {
+          @extend %style-card;
+          transform: rotateY(180deg);
+        }
+        .card-eng {
+          @extend %style-card;
+          background: hsl(0, 90%, 65%);
+        }
+        .control {
+            margin-top: 30px;
+            @extend %center-items;
+            width: 100%;
+            justify-content: space-between;
+            position: relative;
+            .swiper-pagination {
+                span {
+                    display: inline-block
+                }
+            }
+            .swiper-button-next,
+            .swiper-button-prev {
+                top: 0;
+                margin: 0;
+                width: 50px;
+                height: 50px;
+                &::before {
+                    width: 100%
+                }
+            }
+        }
+        .layer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transition: 1s;
+            z-index: 999999999999;
+            opacity: 1;
+            @extend %center-items;
+        }
+    }
+    .list-word {
+        @extend %style-cards;
+        width: 100%;
+        min-width: 360px;
+        max-width: 800px;
+        .item {
+            @extend %center-items;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid hsla(0, 0%, 80%, 0.5);
+            > * {
+                padding: 5px;
+                font-size: 24px
+            }
+            .words {
+                @extend %center-items;
+                gap: 30px;
+            }
+            .buttons {
+                @extend %center-items;
+            } 
+            .btn {
+                font-size: 16px;
+                padding: 7px 15px;
+                margin-left: 5px;
+                color: #fff;
+                font-weight: 400;
+            }
+            .delete {
+                background: hsl(0, 87%, 65%);
+            }
+            .delete + .btn {
+                background: hsl(120, 87%, 60%);
+            }
+        }
+    }
+ 
+};
+
+.setting {
+    @extend %style-cards;
+    position: fixed;
+    right: 0;
+    transform: translateX(100%);
+    top: 0;
+    z-index: 99999;
+    background: #fff;
+    border-radius: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 270px;
+    padding: 50px 20px;
+    transition: 0.8s;
+    border: 1px solid hsla(0, 0%, 80%, 0.5);
+    .btn {
+        margin: 0 auto 20px;
+        background: #0d6efd;
+        color: #fff;
+    }
+    .icon {
+        position: absolute;
+        left: -40px;
+        top: 20px;
+        width: 40px;
+        height: 40px;
+        @extend %center-items;
+        background: #fff;
+        cursor: pointer;
+        border: 1px solid hsla(0, 0%, 80%, 0.5);
+        border-right: 0px;
+        i {
+            font-size: 20px;
+            color: hsl(0, 0%, 65%); 
+      
+        }
+    }
+    &.active {
+        transform: translateX(0%);
+        i {
+            animation-name: gear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+    }
+}
+
+#notifications {
+    position: absolute;
+    top: 5%;
+    left: 0%;
+    font-weight: bold;
+    transition: 1s;
+    .item {
+        background: hsla(119, 100%, 85%, 0.4);;
+        border: 2px solid hsl(119, 100%, 75%);
+        color: hsl(119, 100%, 40%);
+        animation-name: notifications;
+        animation-duration: 1s;
+        padding: 15px;
+        padding-left: 50px;
+        padding-right: 40px;
+    }
+
+    .item.fild {
+        color: hsl(0, 100%, 40%);
+        background: hsla(0, 100%, 85%, 0.4);;
+        border: 2px solid hsl(0, 100%, 75%);
+    }
+    
+}
+
+@keyframes notifications {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes gear {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+

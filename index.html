@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
+    <title>app</title>
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+
+    <!-- Main Css -->
+    <link rel="stylesheet" href="./css/main.css">
 
     <!-- Font Awesome -->
     <link 
@@ -20,20 +23,42 @@
 <body>
     
     <div class="app">
-        <div class="container">
-            <div class="add-word">
-                <input type="text" class="eng-word">
-                <input type="text" class="arb-word">
-                <button class="btn btn-primary">Add</button>
+        <div id="notifications">
+        </div>
+        <div class="setting">
+            <span class="icon"><i class="fa-sharp fa-solid fa-gear"></i></span>
+            <div class="btns">
+                <button class="btn add-word-btn" data-item="add-word">Add Word</button>
+                <button class="btn cards-word-btn" data-item="cards-word">Cards Word</button>
+                <button class="btn list-words-btn" data-item="list-word">List Words</button>
             </div>
-            <div class="cards-word">
-                <div class="card-word">
-                    <h3 class="word">car</h3>
+        </div>
+        <div class="container">
+            <div class="add-word" item="add-word">
+                <input type="text" class="eng-word" placeholder="Word English">
+                <input type="text" class="arb-word" placeholder="Word Arbic">
+                <button id="send" class="btn btn-primary">Add</button>
+            </div>
+            <div class="cards-word swiper slide-cards" item="cards-word">
+                <div class="content swiper-wrapper">
+
                 </div>
+                <div class="control">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <span class="layer">
+                    <button class="btn btn-primary" onclick="swiper(this)">تشغيل</button>
+                </span>
+            </div>
+            <div class="list-word" item="list-word">
             </div>
         </div>
     </div>
 
+    <!-- Swiper Script -->
+    <script src="js/swiper-bundle.min.js"></script>
     <!-- Script js -->
     <script src="js/script.js"></script>
 </body>
